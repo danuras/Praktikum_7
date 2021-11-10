@@ -43,7 +43,10 @@ namespace LatihanADONET
                 conn.Open();
             }
             catch (Exception ex){
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, 
+                    "Error", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
             }
             return conn;
         }
@@ -220,15 +223,20 @@ namespace LatihanADONET
             {
                 cmd.Dispose();
             }
-            if(result > 0)
+            if (result > 0)
             {
                 MessageBox.Show("Data mahasiswa berhasil diupdate !",
                     "Informasi",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
-                conn.Dispose();
+                txtNpmUpdate.Clear();
+                txtNamaUpdate.Clear();
+                txtAngkatanUpdate.Clear();
+                txtNpmUpdate.Focus();
             }
+            else MessageBox.Show("Data mahasiswa gagal diupdate !!!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            conn.Dispose();
         }
 
         private void btnCariDelete_Click(object sender, EventArgs e)
@@ -319,16 +327,22 @@ namespace LatihanADONET
                 {
                     cmd.Dispose();
                 }
+
                 if (result > 0)
                 {
-                    MessageBox.Show("Data mahasiswa berhasil didelete !",
+                    MessageBox.Show("Data mahasiswa berhasil dihapus !",
                         "Informasi",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Exclamation);
 
-                    conn.Dispose();
+                    txtNpmUpdate.Clear();
+                    txtNamaUpdate.Clear();
+                    txtAngkatanUpdate.Clear();
+                    txtNpmUpdate.Focus();
                 }
+                else MessageBox.Show("Data mahasiswa gagal dihapus !!!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            conn.Dispose();
         }
     }
 }
